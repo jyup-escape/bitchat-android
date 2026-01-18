@@ -239,6 +239,9 @@
   <string name="location_notes_empty_desc">be the first to add one for this spot.</string>
   <string name="dismiss">dismiss</string>
   <string name="location_notes_input_placeholder">add a note for this place</string>
+  <string name="delete_note_title">Delete Note</string>
+  <string name="delete_note_confirm">Are you sure you want to delete this note?</string>
+  <string name="delete">Delete</string>
 
   <!-- Debug / Diagnostics -->
   <string name="debug_tools">debug tools</string>

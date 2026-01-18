@@ -362,6 +362,9 @@
   <string name="location_notes_empty_desc">이 장소에 첫 번째 노트를 추가해 보세요.</string>
   <string name="dismiss">닫기</string>
   <string name="location_notes_input_placeholder">이 장소에 노트 추가</string>
+  <string name="delete_note_title">노트 삭제</string>
+  <string name="delete_note_confirm">이 노트를 삭제하시겠습니까?</string>
+  <string name="delete">삭제</string>
     <string name="mesh_service_notification_content">메시 실행 중 — %1$d 피어</string>
 
   <string name="verify_title">verify</string>

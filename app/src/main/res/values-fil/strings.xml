@@ -268,10 +268,8 @@
     <string name="battery_optimization_disabled_title">na‑disable ang pag‑optimize</string>
     <string name="continue_btn">Magpatuloy</string>
     <string name="initializing_mesh_network">Ine‑initialize ang mesh network</string>
-    <string name="dot">.</string>
     <string name="setting_up_bluetooth">Ise‑set up ang Bluetooth mesh…</string>
     <string name="should_take_seconds">Ilang segundo lang ito</string>
-    <string name="warning_emoji">⚠️</string>
     <string name="setup_not_complete">Hindi kumpleto ang setup</string>
     <string name="try_again">Subukang muli</string>
     <string name="privacy_protected">Protektado ang iyong privacy</string>
@@ -279,9 +277,6 @@
     <string name="permissions_header">mga permiso</string>
     <string name="grant_permissions">Payagan</string>
     <string name="location_tracking_warning">HINDI sinusubaybayan ng bitchat ang lokasyon mo</string>
-    <string name="at_symbol">@</string>
-    <string name="app_brand">bitchat/</string>
-    <string name="channel_count_prefix"> · ⧉ </string>
     <string name="geohash_people_header">TAO</string>
     <string name="nobody_around">walang tao sa paligid…</string>
     <string name="you_suffix"> (ikaw)</string>
@@ -362,7 +357,23 @@
         <item quantity="other">%d tao</item>
     </plurals>
 
-    <string name="mesh_service_notification_content">Tumatakbo ang Mesh — %1$d na peer</string>
+  <plurals name="location_notes_title">
+    <item quantity="one">#%1$s ± 1 • %2$d note</item>
+    <item quantity="other">#%1$s ± 1 • %2$d notes</item>
+  </plurals>
+  <string name="location_notes_description">magdagdag ng maiikling permanenteng note sa lokasyong ito para mahanap ng ibang bisita.</string>
+  <string name="location_notes_relays_unavailable">hindi available ang mga geo relay; naka‑pause ang mga note</string>
+  <string name="location_notes_no_relays_title">walang geo relay sa malapit</string>
+  <string name="location_notes_no_relays_desc">nakadepende ang mga note sa geo relay. suriin ang koneksyon at subukan muli.</string>
+  <string name="loading_location_notes">naglo‑load ng mga note…</string>
+  <string name="location_notes_empty_title">wala pang mga note</string>
+  <string name="location_notes_empty_desc">maging una sa pagdagdag nito para sa lugar na ito.</string>
+  <string name="dismiss">isara</string>
+  <string name="location_notes_input_placeholder">magdagdag ng note para sa lugar na ito</string>
+  <string name="delete_note_title">Burahin ang Note</string>
+  <string name="delete_note_confirm">Sigurado ka bang gusto mong burahin ang note na ito?</string>
+  <string name="delete">Burahin</string>
+    <string name="mesh_service_notification_content">Mesh tumatakbo — %1$d peers</string>
 
   <string name="verify_title">verify</string>
   <string name="verify_my_qr_title">scan to verify me</string>

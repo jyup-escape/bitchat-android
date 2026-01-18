@@ -362,6 +362,9 @@
   <string name="location_notes_empty_desc">sé el primero en añadir una para este sitio.</string>
   <string name="dismiss">cerrar</string>
   <string name="location_notes_input_placeholder">agrega una nota para este lugar</string>
+  <string name="delete_note_title">Eliminar nota</string>
+  <string name="delete_note_confirm">¿Estás seguro de que quieres eliminar esta nota?</string>
+  <string name="delete">Eliminar</string>
     <string name="mesh_service_notification_content">Mesh en ejecución — %1$d pares</string>
 
   <string name="verify_title">verificar</string>

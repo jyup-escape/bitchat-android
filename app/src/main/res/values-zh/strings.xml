@@ -209,9 +209,29 @@
     <string name="location_level_province">省/州</string>
     <string name="location_level_region">地区</string>
 
+    <!-- 地点笔记面板 -->
+    <plurals name="location_notes_title">
+        <item quantity="one">#%1$s ± 1 • %2$d 条笔记</item>
+        <item quantity="other">#%1$s ± 1 • %2$d 条笔记</item>
+    </plurals>
+    <string name="location_notes_description">为此位置添加简短的永久备注，方便其他访客查看。</string>
+    <string name="location_notes_relays_unavailable">地理中继不可用；笔记已暂停</string>
+    <string name="location_notes_no_relays_title">附近没有地理中继</string>
+    <string name="location_notes_no_relays_desc">笔记依赖地理中继。请检查连接后重试。</string>
+    <string name="loading_location_notes">正在加载笔记…</string>
+    <string name="location_notes_empty_title">还没有笔记</string>
+    <string name="location_notes_empty_desc">成为第一个为此地点添加笔记的人。</string>
+    <string name="dismiss">关闭</string>
+    <string name="location_notes_input_placeholder">为此地点添加一条笔记</string>
+    <string name="delete_note_title">删除笔记</string>
+    <string name="delete_note_confirm">您确定要删除此笔记吗？</string>
+    <string name="delete">删除</string>
+
     <!-- 调试/诊断 -->
     <string name="debug_tools">调试工具</string>
+    <string name="debug_tools_desc">开发者工具，用于诊断和控制</string>
     <string name="debug_verbose_logging">详细日志</string>
+    <string name="debug_verbose_hint">记录 peer 加入/离开、连接方向、数据包转发和中继</string>
     <string name="debug_bluetooth_roles">Bluetooth 角色</string>
     <string name="debug_gatt_server">GATT 服务器</string>
     <string name="debug_connections_fmt">连接：%1$d / %2$d</string>
@@ -222,6 +242,7 @@
     <string name="debug_max_overall">最大总计</string>
     <string name="debug_packet_relay">数据包中继</string>
     <string name="debug_since_start_fmt">自启动以来：%1$d</string>
+    <string name="debug_roles_hint">开关角色并在禁用时关闭所有连接</string>
     <string name="debug_sync_settings">同步设置</string>
     <string name="debug_max_packets_per_sync_fmt">每次同步的最大包数：%1$d</string>
     <string name="debug_max_gcs_filter_size_fmt">GCS 过滤器最大大小：%1$d 字节（128–1024）</string>
@@ -362,19 +383,6 @@
         <item quantity="other">%d 人</item>
     </plurals>
 
-  <plurals name="location_notes_title">
-    <item quantity="one">#%1$s ± 1 • %2$d 条笔记</item>
-    <item quantity="other">#%1$s ± 1 • %2$d 条笔记</item>
-  </plurals>
-  <string name="location_notes_description">为此位置添加简短的永久备注，方便其他访客查看。</string>
-  <string name="location_notes_relays_unavailable">地理中继不可用；笔记已暂停</string>
-  <string name="location_notes_no_relays_title">附近没有地理中继</string>
-  <string name="location_notes_no_relays_desc">笔记依赖地理中继。请检查连接后重试。</string>
-  <string name="loading_location_notes">正在加载笔记…</string>
-  <string name="location_notes_empty_title">还没有笔记</string>
-  <string name="location_notes_empty_desc">成为第一个为此地点添加笔记的人。</string>
-  <string name="dismiss">关闭</string>
-  <string name="location_notes_input_placeholder">为此地点添加一条笔记</string>
     <string name="mesh_service_notification_content">Mesh 运行中 — %1$d 个节点</string>
 
   <string name="verify_title">验证</string>

@@ -119,6 +119,30 @@ object NostrProtocol {
     }
 
     /**
+     * Create a deletion event (kind 5) for one or more event IDs
+     */
+    suspend fun createDeletionEvent(
+        eventIds: List<String>,
+        reason: String,
+        senderIdentity: NostrIdentity
+    ): NostrEvent = withContext(Dispatchers.Default) {
+        val tags = mutableListOf<List<String>>()
+        eventIds.forEach { id ->
+            tags.add(listOf("e", id))
+        }
+        
+        val event = NostrEvent(
+            pubkey = senderIdentity.publicKeyHex,
+            createdAt = (System.currentTimeMillis() / 1000).toInt(),
+            kind = NostrKind.DELETION,
+            tags = tags,
+            content = reason
+        )
+        
+        return@withContext senderIdentity.signEvent(event)
+    }
+
+    /**
      * Create a geohash-scoped presence event (kind 20001)
      * Has no content and no nickname, used for participant counting
      */

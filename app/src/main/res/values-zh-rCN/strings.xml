@@ -8,12 +8,15 @@
   <string name="location_notes_description">为此位置添加简短的永久备注，方便其他访客查看。</string>
   <string name="location_notes_relays_unavailable">地理中继不可用；笔记已暂停</string>
   <string name="location_notes_no_relays_title">附近没有地理中继</string>
-  <string name="location_notes_no_relays_desc">笔记依赖地理中继。请检查连接后重试。</string>
+  <string name="location_notes_no_relays_desc">笔记依赖地理中继识别。请检查连接后重试。</string>
   <string name="loading_location_notes">正在加载笔记…</string>
   <string name="location_notes_empty_title">还没有笔记</string>
   <string name="location_notes_empty_desc">成为第一个为此地点添加笔记的人。</string>
   <string name="dismiss">关闭</string>
   <string name="location_notes_input_placeholder">为此地点添加一条笔记</string>
+  <string name="delete_note_title">删除笔记</string>
+  <string name="delete_note_confirm">您确定要删除此笔记吗？</string>
+  <string name="delete">删除</string>
     <string name="mesh_service_notification_content">Mesh 运行中 — %1$d 个节点</string>
 
   <string name="verify_title">验证</string>
@@ -52,4 +55,3 @@
   <string name="verify_success_body">你已验证 %1$s</string>
   <string name="verify_success_system_message">已验证 %1$s</string>
 </resources>
-

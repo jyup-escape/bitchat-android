@@ -31,7 +31,7 @@
     <string name="battery_optimization_why_disable">Por que desativar a otimização de bateria?</string>
     <string name="battery_optimization_explanation">O bitchat roda em segundo plano para manter conexões mesh com dispositivos próximos. A otimização de bateria pode interromper essas conexões, fazendo com que mensagens atrasem ou se percam.\n\nDesativar a otimização de bateria garante comunicação P2P confiável.</string>
     <string name="battery_optimization_disable_button">Desativar otimização de bateria</string>
-    <string name="battery_optimization_note">Nota: Você pode alterar isso depois em Configurações do Android &gt; Apps &gt; bitchat &gt; Bateria.</string>
+    <string name="battery_optimization_note">Nota: Você pode alterar isso depois em Configuras do Android &gt; Apps &gt; bitchat &gt; Bateria.</string>
     <string name="battery_optimization_not_supported_explanation">Seu dispositivo não requer ajustes de otimização de bateria. O bitchat funcionará normalmente.</string>
     <string name="battery_optimization_not_supported_message">Seu dispositivo não requer ajustes de otimização de bateria. O bitchat funcionará normalmente.</string>
     <string name="battery_optimization_success_message">O bitchat pode operar de forma confiável em segundo plano</string>
@@ -259,7 +259,7 @@
     <string name="open_location_settings">Abrir configurações de localização</string>
     <string name="check_again">Verificar novamente</string>
     <string name="location_services_unavailable">Serviços de localização indisponíveis</string>
-    <string name="location_unavailable_explanation">Os serviços de localização não estão disponíveis neste dispositivo. Isso é incomum, pois serviços de localização são padrão em dispositivos Android.\n\nO bitchat requer serviços de localização para a varredura Bluetooth funcionar corretamente (requisito do Android). Sem isso, o app não consegue descobrir usuários próximos.</string>
+    <string name="location_unavailable_explanation">Serviços de localização não estão disponíveis neste dispositivo. Isso é incomum, pois serviços de localização são padrão em dispositivos Android.\n\nO bitchat requer serviços de localização para a varredura Bluetooth funcionar corretamente (requisito do Android). Sem isso, o app não consegue descobrir usuários próximos.</string>
     <string name="checking_location_services">Verificando serviços de localização…</string>
     <string name="bluetooth_required">Bluetooth necessário</string>
     <string name="bluetooth_needs_for">O bitchat precisa de Bluetooth para:</string>
@@ -326,7 +326,7 @@
     <!-- Tipos de permissões -->
     <string name="perm_type_nearby_devices">Dispositivos próximos</string>
     <string name="perm_type_precise_location">Localização precisa</string>
-    <string name="perm_type_microphone">Microfone</string>
+    <string name="perm_type_microphone">Microfono</string>
     <string name="perm_type_notifications">Notificações</string>
     <string name="perm_type_battery_optimization">Otimização de bateria</string>
     <string name="perm_type_other">Outros</string>
@@ -362,6 +362,9 @@
   <string name="location_notes_empty_desc">seja o primeiro a adicionar uma para este local.</string>
   <string name="dismiss">fechar</string>
   <string name="location_notes_input_placeholder">adicione uma nota para este local</string>
+  <string name="delete_note_title">Excluir nota</string>
+  <string name="delete_note_confirm">Tem certeza de que deseja excluir esta nota?</string>
+  <string name="delete">Excluir</string>
     <string name="mesh_service_notification_content">Mesh rodando — %1$d pares</string>
 
   <string name="verify_title">verificar</string>

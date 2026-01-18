@@ -320,7 +320,7 @@
     <string name="perm_location_system">bitchat memerlukan ini untuk memindai perangkat terdekat</string>
     <string name="perm_notifications_desc">Terima notifikasi saat Anda menerima pesan pribadi</string>
     <string name="perm_notifications_system">Izinkan bitchat mengirim notifikasi kepada Anda</string>
-    <string name="perm_battery_desc">Nonaktifkan optimalisasi baterai untuk memastikan bitchat berjalan andal di latar belakang dan mempertahankan koneksi jaringan mesh</string>
+    <string name="perm_battery_desc">Nonaktifkan optimalisasi baterai untuk memastikan bitchat berjalan andal di latar belakang e mempertahankan koneksi jaringan mesh</string>
     <string name="perm_battery_system">Izinkan bitchat berjalan tanpa pembatasan baterai</string>
 
     <!-- Jenis izin -->
@@ -362,6 +362,9 @@
   <string name="location_notes_empty_desc">jadilah yang pertama menambahkan catatan untuk tempat ini.</string>
   <string name="dismiss">tutup</string>
   <string name="location_notes_input_placeholder">tambahkan catatan untuk tempat ini</string>
+  <string name="delete_note_title">Hapus Catatan</string>
+  <string name="delete_note_confirm">Apakah Anda yakin ingin menghapus catatan ini?</string>
+  <string name="delete">Hapus</string>
     <string name="mesh_service_notification_content">Mesh berjalan — %1$d peer</string>
 
   <string name="verify_title">verify</string>

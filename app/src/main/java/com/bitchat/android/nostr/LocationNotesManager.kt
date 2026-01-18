@@ -284,6 +284,58 @@ class LocationNotesManager private constructor() {
             }
         }
     }
+
+    /**
+     * Delete a location note (kind 5 deletion)
+     */
+    fun delete(noteId: String) {
+        val currentGeohash = _geohash.value
+        if (currentGeohash == null) {
+            Log.w(TAG, "Cannot delete note - no geohash set")
+            return
+        }
+
+        val relays = try {
+            com.bitchat.android.nostr.RelayDirectory.closestRelaysForGeohash(currentGeohash, 5)
+        } catch (e: Exception) {
+            emptyList()
+        }
+
+        if (relays.isEmpty()) {
+            _errorMessage.value = "No relays available for deletion"
+            return
+        }
+
+        val deriveIdentity = deriveIdentityFunc ?: return
+
+        scope.launch {
+            try {
+                val identity = withContext(Dispatchers.IO) {
+                    deriveIdentity(currentGeohash)
+                }
+
+                val event = withContext(Dispatchers.IO) {
+                    NostrProtocol.createDeletionEvent(
+                        eventIds = listOf(noteId),
+                        reason = "Deleted by user",
+                        senderIdentity = identity
+                    )
+                }
+
+                // Optimistic local update
+                _notes.value = _notes.value.filter { it.id != noteId }
+                noteIDs.remove(noteId)
+
+                withContext(Dispatchers.IO) {
+                    sendEventFunc?.invoke(event, relays)
+                }
+
+                Log.d(TAG, "✅ Deletion request sent for note: $noteId")
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to delete note: ${e.message}")
+            }
+        }
+    }
     
     /**
      * Subscribe to location notes for current geohash
@@ -356,6 +408,27 @@ class LocationNotesManager private constructor() {
      * Handle incoming event from subscription
      */
     private fun handleEvent(event: NostrEvent) {
+        // Handle deletions (kind 5)
+        if (event.kind == NostrKind.DELETION) {
+            val deletedIds = event.tags.filter { it.size >= 2 && it[0] == "e" }.map { it[1] }
+            if (deletedIds.isNotEmpty()) {
+                val currentNotes = _notes.value ?: emptyList()
+                val filteredNotes = currentNotes.filter { note ->
+                    // Only delete if the deletion event is from the same pubkey as the note
+                    // (simplified for geohash where pubkey is derived from geohash)
+                    !deletedIds.contains(note.id) || event.pubkey != note.pubkey
+                }
+                
+                // If anything was actually removed
+                if (filteredNotes.size < currentNotes.size) {
+                    _notes.value = filteredNotes
+                    noteIDs.removeAll(deletedIds.toSet())
+                    Log.d(TAG, "🗑️ Processed deletion for ${currentNotes.size - filteredNotes.size} notes")
+                }
+            }
+            return
+        }
+
         // Validate event
         if (event.kind != NostrKind.TEXT_NOTE) {
             Log.v(TAG, "Ignoring non-text-note event: kind=${event.kind}")

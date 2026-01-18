@@ -349,6 +349,23 @@
         <item quantity="other">%d জন</item>
     </plurals>
 
+  <plurals name="location_notes_title">
+    <item quantity="one">#%1$s ± 1 • %2$d নোট</item>
+    <item quantity="other">#%1$s ± 1 • %2$d নোট</item>
+  </plurals>
+  <string name="location_notes_description">অন্যান্য দর্শনার্থীরা যাতে খুঁজে পেতে পারে সেজন্য এই স্থানে ছোট স্থায়ী নোট যোগ করুন।</string>
+  <string name="location_notes_relays_unavailable">জিও রিলে উপলব্ধ নেই; নোট স্থগিত করা হয়েছে</string>
+  <string name="location_notes_no_relays_title">কাছাকাছি কোনো জিও রিলে নেই</string>
+  <string name="location_notes_no_relays_desc">নোট জিও রিলে এর উপর নির্ভর করে। সংযোগ পরীক্ষা করুন এবং আবার চেষ্টা করুন।</string>
+  <string name="loading_location_notes">নোট লোড হচ্ছে…</string>
+  <string name="location_notes_empty_title">এখনো কোনো নোট নেই</string>
+  <string name="location_notes_empty_desc">এই জায়গার জন্য প্রথম নোট যোগ করুন।</string>
+  <string name="dismiss">বন্ধ করুন</string>
+  <string name="location_notes_input_placeholder">এই জায়গার জন্য একটি নোট যোগ করুন</string>
+  <string name="delete_note_title">নোট মুছে ফেলুন</string>
+  <string name="delete_note_confirm">আপনি কি নিশ্চিত যে আপনি এই নোটটি মুছে ফেলতে চান?</string>
+  <string name="delete">মুছে ফেলুন</string>
+
     <string name="mesh_service_notification_content">মেশ চলছে — %1$d পিয়ার</string>
 
   <string name="verify_title">verify</string>

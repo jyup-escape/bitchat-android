@@ -1,7 +1,9 @@
 package com.bitchat.android.ui
 
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
@@ -11,6 +13,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowUpward
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.getValue
@@ -65,6 +68,9 @@ fun LocationNotesSheet(
     val errorMessage by notesManager.errorMessage.collectAsStateWithLifecycle()
     val initialLoadComplete by notesManager.initialLoadComplete.collectAsStateWithLifecycle(false)
     
+    // Deletion confirmation state
+    var noteToDelete by remember { mutableStateOf<LocationNotesManager.Note?>(null) }
+
     // SIMPLIFIED: Get count directly from notes list (no separate counter needed)
     val count = notes.size
     
@@ -145,7 +151,10 @@ fun LocationNotesSheet(
                     }
                     else -> {
                         items(notes, key = { it.id }) { note ->
-                            NoteRow(note = note)
+                            NoteRow(
+                                note = note,
+                                onLongClick = { noteToDelete = note }
+                            )
                             Spacer(modifier = Modifier.height(24.dp))
                         }
                         item {
@@ -214,6 +223,31 @@ fun LocationNotesSheet(
             }
         }
     }
+
+    // Delete confirmation dialog
+    if (noteToDelete != null) {
+        AlertDialog(
+            onDismissRequest = { noteToDelete = null },
+            title = { Text(stringResource(R.string.delete_note_title)) },
+            text = { Text(stringResource(R.string.delete_note_confirm)) },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        noteToDelete?.let { notesManager.delete(it.id) }
+                        noteToDelete = null
+                    },
+                    colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colorScheme.error)
+                ) {
+                    Text(stringResource(R.string.delete))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { noteToDelete = null }) {
+                    Text(stringResource(R.string.cancel))
+                }
+            }
+        )
+    }
 }
 
 /**
@@ -270,8 +304,12 @@ private fun LocationNotesHeader(
  * Note row - matches iOS noteRow exactly
  * Shows @basename then timestamp, then content below
  */
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-private fun NoteRow(note: LocationNotesManager.Note) {
+private fun NoteRow(
+    note: LocationNotesManager.Note,
+    onLongClick: () -> Unit
+) {
     // Extract baseName (before #suffix like iOS)
     val baseName = note.displayName.split("#", limit = 2).firstOrNull() ?: note.displayName
     val ts = timestampText(note.createdAt)
@@ -280,6 +318,10 @@ private fun NoteRow(note: LocationNotesManager.Note) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 4.dp)
+            .combinedClickable(
+                onClick = { /* Nothing for single click */ },
+                onLongClick = onLongClick
+            )
     ) {
         // First row: @nickname and timestamp
         Row(

@@ -349,6 +349,22 @@
         <item quantity="other">%d نفر</item>
     </plurals>
 
+  <plurals name="location_notes_title">
+    <item quantity="one">#%1$s ± 1 • %2$d یادداشت</item>
+    <item quantity="other">#%1$s ± 1 • %2$d یادداشت</item>
+  </plurals>
+  <string name="location_notes_description">یادداشت‌های کوتاه و همیشگی برای این مکان اضافه کنید تا سایر بازدیدکنندگان آن‌ها را بیابند.</string>
+  <string name="location_notes_relays_unavailable">رله‌های جغرافیایی در دسترس نیستند؛ یادداشت‌ها متوقف شد</string>
+  <string name="location_notes_no_relays_title">رله جغرافیایی در نزدیکی یافت نشد</string>
+  <string name="location_notes_no_relays_desc">یادداشت‌ها به رله‌های جغرافیایی وابسته‌اند. اتصال را بررسی کرده و دوباره تلاش کنید.</string>
+  <string name="loading_location_notes">در حال بارگذاری یادداشت‌ها…</string>
+  <string name="location_notes_empty_title">هنوز یادداشتی نیست</string>
+  <string name="location_notes_empty_desc">اولین کسی باشید که برای این مکان یادداشت اضافه می‌کند.</string>
+  <string name="dismiss">بستن</string>
+  <string name="location_notes_input_placeholder">یادداشتی برای این مکان اضافه کنید</string>
+  <string name="delete_note_title">حذف یادداشت</string>
+  <string name="delete_note_confirm">آیا از حذف این یادداشت اطمینان دارید؟</string>
+  <string name="delete">حذف</string>
     <string name="mesh_service_notification_content">مش در حال اجرا — %1$d همتا</string>
 
   <string name="verify_title">verify</string>

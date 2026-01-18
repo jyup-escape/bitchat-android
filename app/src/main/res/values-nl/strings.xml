@@ -118,7 +118,7 @@
     <string name="about_pow_desc_low">laag - basis spambescherming</string>
     <string name="about_pow_desc_medium">gemiddeld - goede spambescherming</string>
     <string name="about_pow_desc_high">hoog - sterke spambescherming</string>
-    <string name="about_pow_desc_very_high">zeer hoog - kan vertragingen veroorzaken</string>
+    <string name="about_pow_desc_very_high">zeer hoog - kan vertragingen verooraken</string>
     <string name="about_pow_desc_extreme">extreem - aanzienlijke berekening vereist</string>
     <string name="about_network">netwerk</string>
     <string name="about_tor_off">Tor uit</string>
@@ -394,6 +394,9 @@
   <string name="location_notes_empty_desc">wees de eerste die een notitie voor deze plek toevoegt.</string>
   <string name="dismiss">sluiten</string>
   <string name="location_notes_input_placeholder">voeg een notitie toe voor deze plek</string>
+  <string name="delete_note_title">Notitie verwijderen</string>
+  <string name="delete_note_confirm">Weet u zeker dat u deze notitie wilt verwijderen?</string>
+  <string name="delete">Verwijderen</string>
     <string name="mesh_service_notification_content">Mesh actief — %1$d peers</string>
 
   <string name="verify_title">verify</string>
