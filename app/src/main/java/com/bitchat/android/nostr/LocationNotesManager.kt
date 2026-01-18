@@ -70,6 +70,9 @@ class LocationNotesManager private constructor() {
     
     private val _geohash = MutableStateFlow<String?>(null)
     val geohash: StateFlow<String?> = _geohash.asStateFlow()
+
+    private val _currentUserPubkey = MutableStateFlow<String?>(null)
+    val currentUserPubkey: StateFlow<String?> = _currentUserPubkey.asStateFlow()
     
     private val _initialLoadComplete = MutableStateFlow(false)
     val initialLoadComplete: StateFlow<Boolean> = _initialLoadComplete.asStateFlow()
@@ -144,6 +147,18 @@ class LocationNotesManager private constructor() {
         _notes.value = emptyList()
         noteIDs.clear()
         _geohash.value = normalized
+
+        // Derive current user pubkey for this geohash
+        scope.launch {
+            try {
+                val identity = withContext(Dispatchers.IO) {
+                    deriveIdentityFunc?.invoke(normalized)
+                }
+                _currentUserPubkey.value = identity?.publicKeyHex
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to derive identity for $normalized: ${e.message}")
+            }
+        }
         
         // Compute target geohashes: center + neighbors (±1)
         val neighbors = try {
@@ -413,17 +428,28 @@ class LocationNotesManager private constructor() {
             val deletedIds = event.tags.filter { it.size >= 2 && it[0] == "e" }.map { it[1] }
             if (deletedIds.isNotEmpty()) {
                 val currentNotes = _notes.value ?: emptyList()
+                
+                // Track if we actually deleted something
+                var deletedCount = 0
+                
                 val filteredNotes = currentNotes.filter { note ->
-                    // Only delete if the deletion event is from the same pubkey as the note
-                    // (simplified for geohash where pubkey is derived from geohash)
-                    !deletedIds.contains(note.id) || event.pubkey != note.pubkey
+                    val isTarget = deletedIds.contains(note.id)
+                    // standard Nostr: only allow deletion if the pubkey matches the note's pubkey
+                    val shouldDelete = isTarget && event.pubkey == note.pubkey
+                    
+                    if (shouldDelete) {
+                        deletedCount++
+                        false // Filter out (delete)
+                    } else {
+                        true // Keep
+                    }
                 }
                 
                 // If anything was actually removed
-                if (filteredNotes.size < currentNotes.size) {
+                if (deletedCount > 0) {
                     _notes.value = filteredNotes
                     noteIDs.removeAll(deletedIds.toSet())
-                    Log.d(TAG, "🗑️ Processed deletion for ${currentNotes.size - filteredNotes.size} notes")
+                    Log.d(TAG, "🗑️ Processed deletion for $deletedCount notes")
                 }
             }
             return
@@ -536,6 +562,7 @@ class LocationNotesManager private constructor() {
         _notes.value = emptyList()
         noteIDs.clear()
         _geohash.value = null
+        _currentUserPubkey.value = null
         _initialLoadComplete.value = false
         _errorMessage.value = null
     }

@@ -64,6 +64,7 @@ fun LocationNotesSheet(
     
     // State
     val notes by notesManager.notes.collectAsStateWithLifecycle()
+    val currentUserPubkey by notesManager.currentUserPubkey.collectAsStateWithLifecycle()
     val state by notesManager.state.collectAsStateWithLifecycle(LocationNotesManager.State.IDLE)
     val errorMessage by notesManager.errorMessage.collectAsStateWithLifecycle()
     val initialLoadComplete by notesManager.initialLoadComplete.collectAsStateWithLifecycle(false)
@@ -153,7 +154,12 @@ fun LocationNotesSheet(
                         items(notes, key = { it.id }) { note ->
                             NoteRow(
                                 note = note,
-                                onLongClick = { noteToDelete = note }
+                                onLongClick = { 
+                                    // Only show delete dialog if note belongs to current user
+                                    if (currentUserPubkey != null && note.pubkey == currentUserPubkey) {
+                                        noteToDelete = note
+                                    }
+                                }
                             )
                             Spacer(modifier = Modifier.height(24.dp))
                         }
